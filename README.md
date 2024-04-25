@@ -17,7 +17,7 @@ Este proyecto cuenta con un login y registro, una simulación de chat, una encue
 
 ## Developer server
 
-**Url Firebase**   
+**Url Firebase**   https://l4-rmm-saladejuegos.web.app
 
 
 Este proyecto se generó con [Angular CLI] (https://github.com/angular/angular-cli) versión 17.3.5 y Bootstrap versión 20.11.1.
