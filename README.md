@@ -24,8 +24,8 @@ Este proyecto se generó con [Angular CLI] (https://github.com/angular/angular-c
 
 ## Imágenes :camera:
 
-![Login](/src/assets/catalogo/login.png)
+<!-- ![Login](/src/assets/catalogo/login.png)
 
 
 
-![Juego Mayor o Menor](/src/assets/catalogo/juego.png)
+![Juego Mayor o Menor](/src/assets/catalogo/juego.png) -->
