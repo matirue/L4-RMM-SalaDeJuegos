@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet, CommonModule, ReactiveFormsModule, FormsModule, 
+    RouterLink, RouterLinkActive],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
@@ -18,25 +23,25 @@ export class NavBarComponent {
 
   constructor(
     private router: Router,
-    // private authServicio: AuthService, 
-    // public authFire: AngularFireAuth
+    private authServicio: AuthService, 
+    public authFire: AngularFireAuth
   ) { 
 
-    // this.authFire.authState.subscribe((res: { uid: any; email: any; })=>{
-    //   if(res && res.uid){
-    //     this.userLogged = res.email;
-    //     this.ocultarLogin = false;
-    //     this.ocultarLogout = true;
+    this.authFire.authState.subscribe(res=>{
+      if(res && res.uid){
+        this.userLogged = res.email;
+        this.ocultarLogin = false;
+        this.ocultarLogout = true;
 
-    //     console.log('User log -> ', this.userLogged);
-    //   } else {
+        // console.log('User log -> ', this.userLogged);
+      } else {
         
-    //     this.ocultarLogin = true;
-    //     this.ocultarLogout = false;
+        this.ocultarLogin = true;
+        this.ocultarLogout = false;
 
-    //     console.log(' No hay usuario logueado ');
-    //   }
-    // });
+        // console.log(' No hay usuario logueado ');
+      }
+    });
   }
 
   async ngOnInit() {
@@ -46,7 +51,7 @@ export class NavBarComponent {
 
   async logOut(){
     try{
-      // await this.authFire.signOut();
+      await this.authFire.signOut();
 
       this.router.navigateByUrl('/');
 
@@ -54,12 +59,7 @@ export class NavBarComponent {
     }catch(error){ console.log(error); }
     
 
-    var modelo = this;
-
-
-    
-    //this.router.navigateByUrl('home');
-    //console.log('chau!');
+    var modelo = this; 
   }
 
 

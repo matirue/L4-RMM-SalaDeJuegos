@@ -1,0 +1,80 @@
+<body class="text-center">
+
+    <form class="form-signin" [formGroup] = "registroForm" (ngSubmit)="Registar()">
+      <img class="mb-4" src="./../../../assets/consola-de-juego.png" alt="" width="72" height="72">
+  
+      <h1 class="title" style="text-shadow: -16px 9px 8px rgba(146,34,34,0.6);">Registrar</h1>
+
+      <br>
+
+      <div class="field">
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" placeholder="Email" 
+          [class.is-danger]="eamil_campoInvalido"
+          [class.is-success]="eamil_campoValido" 
+          type="email" formControlName="email" >
+          <span class="icon is-small is-left">
+            <i class="fas fa-at"></i>
+          </span>
+          <span class="icon is-small is-right" *ngIf="eamil_campoInvalido; else noInvalido"> <!--Cruz-->
+            <i class="fas fa-times"></i>
+          </span>
+          <ng-template #noInvalido>
+            <span class="icon is-small is-right"> <!--Tilde-->
+              <i class="fas fa-check"></i>
+            </span>
+          </ng-template>        
+        </div>
+        <div *ngIf="eamil_campoInvalido">        
+          <p class="help is-danger" *ngIf="email_campo?.hasError('required')">Campo vacio</p>
+          <p class="help is-danger" *ngIf="email_campo?.hasError('email')">Debe respetar el formato email</p>
+        </div>      
+      </div>
+  
+      <div class="field">
+        <div class="control has-icons-left">
+          <input class="input" 
+          [class.is-danger]="password_campoInvalido"
+          [class.is-success]="password_campoValido"
+          type="password" formControlName="password" placeholder="Contraseña">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>      
+        </div>
+        <div *ngIf="password_campoInvalido">        
+          <p class="help is-danger" *ngIf="password_campo?.hasError('required')">Campo vacio</p>
+          <p class="help is-danger" *ngIf="password_campo?.hasError('minLength')">Minimo 6 caracteres</p>
+        </div> 
+        
+      </div>
+
+      <br>
+
+      <div class="container">
+        <div *ngIf="load">
+          <div class="spinner col-md-2 loader5 bg-green-grd">
+            <img src="../../../assets/gif/pato.gif" >
+          </div>  
+        </div>
+      </div>
+
+      <div *ngIf="mostrarError">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong> ERROR! </strong> {{mensajeAlert}}
+        </div>
+      </div> 
+
+
+
+      <br><br>
+      
+      <button class="btn btn-lg btn-danger btn-block" type="submit" [disabled]="!registroForm.valid">Registrarme</button>
+      <hr>
+      <button class="btn btn-lg btn-success btn-block" type="button" (click)="Login()">Ya tengo cuenta</button>
+      
+      
+      <br> 
+    </form>   
+    
+  
+  </body>

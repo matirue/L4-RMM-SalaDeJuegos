@@ -1,28 +1,22 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../clases/user';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
-import { UsuarioService } from '../../servicios/usuario.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-registro',
   standalone: true,
-  imports: [
-    RouterOutlet, CommonModule, ReactiveFormsModule, FormsModule, 
-     RouterLink, RouterLinkActive
-  ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [RouterOutlet, CommonModule, ReactiveFormsModule],
+  templateUrl: './registro.component.html',
+  styleUrl: './registro.component.css'
 })
-export class LoginComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
-  public userAdmin: User;
+  user: User = new User();
+  
   public load: boolean = false;
-
-  mensajeAlert: string = '';
-  mostrarError: boolean = false;
 
   public mensajeValidacion = {
     'email': [
@@ -35,36 +29,34 @@ export class LoginComponent implements OnInit {
     ]
   };
 
-  loginForm = new FormGroup({
+  mensajeAlert: string = '';
+  mostrarError: boolean = false;
+
+  registroForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
-  });
+  });  
 
   constructor(
     private rutas: Router,
-    private servicio: UsuarioService,
     private authService: AuthService,
     private formBuilder: FormBuilder
-  ) {
-    this.userAdmin = new User();
-
-    this.loginForm = this.formBuilder.group({
+  ) { 
+    this.registroForm = this.formBuilder.group({
       email:['', 
             [Validators.required, 
             Validators.email,
             Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       password:['', [Validators.required, Validators.minLength(6)]]
     });
-    
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
-
 
   /**campo email */
   get email_campo(){
-    return this.loginForm.get('email');
+    return this.registroForm.get('email');
   }
   get eamil_campoValido(){
     return this.email_campo?.touched && this.email_campo.valid;
@@ -75,7 +67,7 @@ export class LoginComponent implements OnInit {
 
   /**campo password */
   get password_campo(){
-    return this.loginForm.get('password');
+    return this.registroForm.get('password');
   }
   get password_campoValido(){
     return this.password_campo?.touched && this.password_campo.valid;
@@ -85,34 +77,35 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Funcion que inicia session
+   * Registro el usuario
    */
-  async Ingresar(){
+  async Registar(){
 
-    const { email, password } = this.loginForm.value;
-    
-    if(email && password) {
-      try {
-        const usuario = await this.authService.login(email, password);
-  
-        if(usuario){
-          this.mostrarError = false;
-  
-  
-          this.IrHome();
-          
-        }else{
-          this.mensajeAlert = ' El usuario o contraseña ingresados son inexistente';
-          this.mostrarError = true;
-        }
+    const { email, password } = this.registroForm.value;
+
+    if (email != null && password != null){
+      try { 
+          const usuario = await this.authService.register(email, password);
+
+          if(usuario) { 
+            this.IrHome();
+          } else {
+            this.mensajeAlert = ' El email: "' + email + '" ya existe';
+            this.mostrarError = true;
+          }  
       }catch(error){
         console.log(error);
-        
       }
-    }    
+    }
+
+    
+
+
+     
   }
 
-  /***********************Rutas********************************* */
+  
+
   IrHome() { 
     var modelo = this;
     this.load = true;
@@ -122,15 +115,8 @@ export class LoginComponent implements OnInit {
     }, 2000); 
   }
 
-  Registrar(){
-    this.rutas.navigate(['registro']);
+  Login(){
+    this.rutas.navigate(['login']);
   }
 
-  public InicioRapido(){
-    this.userAdmin.email = "admin@admin.com";
-    this.userAdmin.password = "123456";
-    
-    
-
-  }
 }

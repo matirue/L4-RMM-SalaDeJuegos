@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "L4-RMN-SalaDeJuegos": {
+    "l4-rmm-saladejuegos": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "L4-RMN-SalaDeJuegos:build:production"
+              "buildTarget": "l4-rmm-saladejuegos:build:production"
             },
             "development": {
-              "buildTarget": "L4-RMN-SalaDeJuegos:build:development"
+              "buildTarget": "l4-rmm-saladejuegos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "L4-RMN-SalaDeJuegos:build"
+            "buildTarget": "l4-rmm-saladejuegos:build"
           }
         },
         "test": {
