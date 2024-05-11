@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; 
 
 @Injectable({
   providedIn: 'root'
@@ -7,35 +8,43 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthService {
 
   public isLogged: any = false;
-  public usuario: any = {};
+  public usuario: any = {};  
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private firestore: AngularFirestore
   ) { 
     afAuth.authState.subscribe(user=>{
         this.isLogged = user;
         this.usuario.email = user?.email;
-        this.usuario.uid = user?.uid;
+        this.usuario.uid = user?.uid; 
     });
-  }
+  }  
 
-  
+  /**  Iniciar sesion */
+  async login(email: string, password: string) {
+    try {
+      const retorno = await this.afAuth.signInWithEmailAndPassword(email, password);
 
-  /**
-   * Iniciar sesion
-   */
-  async login(email: string, password: string){
-    try{
-        const retorno = await this.afAuth.signInWithEmailAndPassword(email, password);
+      if (retorno) {
+        // Guarda el email y la fecha actual en Firestore
+        const userDocRef = this.firestore.collection('users').doc(retorno.user?.uid);
+        userDocRef.set({
+          email: retorno.user?.email,
+          loginDate: new Date() // Fecha actual
+        });
 
-        return retorno; 
-    }catch(error){
-        console.log('Error en el login -> ', error);
+        return retorno;
+      } else {
         return null;
+      }
+    } catch (error) {
+      console.log('Error en el login -> ', error);
+      return null;
     }
-    
-
   }
+
+ 
 
   /**
    * Registra en la db a un nuevo usuario

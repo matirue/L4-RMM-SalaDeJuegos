@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
 import { UsuarioService } from '../../servicios/usuario.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-login',
@@ -54,14 +54,12 @@ export class LoginComponent implements OnInit {
             Validators.email,
             Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       password:['', [Validators.required, Validators.minLength(6)]]
-    });
-    
+    }); 
    }
 
   ngOnInit(): void {
   }
-
-
+ 
   /**campo email */
   get email_campo(){
     return this.loginForm.get('email');
@@ -84,9 +82,7 @@ export class LoginComponent implements OnInit {
     return this.password_campo?.touched && (this.password_campo.value)!.length<6;
   }
 
-  /**
-   * Funcion que inicia session
-   */
+  /**  Funcion que inicia session */
   async Ingresar(){
 
     const { email, password } = this.loginForm.value;
@@ -96,18 +92,14 @@ export class LoginComponent implements OnInit {
         const usuario = await this.authService.login(email, password);
   
         if(usuario){
-          this.mostrarError = false;
-  
-  
-          this.IrHome();
-          
+          this.mostrarError = false;  
+          this.IrHome();          
         }else{
           this.mensajeAlert = ' El usuario o contraseña ingresados son inexistente';
           this.mostrarError = true;
         }
       }catch(error){
-        console.log(error);
-        
+        console.log(error); 
       }
     }    
   }
@@ -117,20 +109,13 @@ export class LoginComponent implements OnInit {
     var modelo = this;
     this.load = true;
 
-    setTimeout(function(){
-      modelo.rutas.navigate(['home']);
-    }, 2000); 
+    setTimeout(function(){ modelo.rutas.navigate(['home']); }, 2000); 
   }
 
-  Registrar(){
-    this.rutas.navigate(['registro']);
-  }
+  Registrar(){ this.rutas.navigate(['registro']); }
 
   public InicioRapido(){
     this.userAdmin.email = "admin@admin.com";
-    this.userAdmin.password = "123456";
-    
-    
-
+    this.userAdmin.password = "123456"; 
   }
 }
