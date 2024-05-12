@@ -1,0 +1,26 @@
+<div class="princiapal">
+    <div class="container main-container">
+        <div class="chat-window">
+            <h2>Chat Game</h2>
+
+            <hr>
+
+            <div class="app-mensajes" id="app-mensajes">
+                <div *ngFor='let chat of chatSrv.chats' [ngClass]="{'text-right': chatSrv.nombreUser == chat.nombre}">
+                    <span class="badge badge-primary" *ngIf="chatSrv.nombreUser == chat.nombre">Yo</span>
+                    
+                    <span class="badge badge-success" *ngIf="chatSrv.nombreUser != chat.nombre">{{chat.nombre}}</span>
+                  
+                    <br>
+
+                    <p class="badge badge-pill badge-light">{{chat.mensaje}}</p>
+
+                    <span class="hora-chat">{{chat.hora}}</span>
+                </div>  
+
+                <input type="text" class="form-control" name="mensaje" autocomplete="off" [(ngModel)]="mensaje" 
+                    (keyup.enter)="EnviarMensaje()" placeholder="Enviar... ">
+            </div> 
+        </div>
+    </div>
+</div>

@@ -20,18 +20,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // goAhorcado(){ this.router.navigate(["juegos/ahorcado"]); }
+  //games
+  goAhorcado(){ this.router.navigate(["juegos/ahorcado"]); }
 
-  // goMayorMenor(){ this.router.navigate(["juegos/mayorMenor"]); }
+  goMayorMenor(){ this.router.navigate(["juegos/mayorMenor"]); }
 
   // goPreguntados(){ this.router.navigate(["juegos/preguntados"]); }
   
   // goAdivinarColor(){ this.router.navigate(["juegos/adivinarColor"]); }
 
   // por el momento..
-  goAhorcado(){ this.router.navigate(["build"]); }
+  // goAhorcado(){ this.router.navigate(["build"]); }
 
-  goMayorMenor(){ this.router.navigate(["build"]); }
+  // goMayorMenor(){ this.router.navigate(["build"]); }
 
   goPreguntados(){ this.router.navigate(["build"]); }
   
