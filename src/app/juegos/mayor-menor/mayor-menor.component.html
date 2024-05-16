@@ -32,7 +32,7 @@
             <button type="submit" class="col btn" *ngIf="!smsFinal" (click)="Jugar('mayor')">Mayor</button>
             <button type="submit" class="col btn" *ngIf="!smsFinal" (click)="Jugar('menor')">Menor</button>
     
-            <button type="submit" class="col btn" *ngIf="smsFinal" (click)="Repetir()"><i class="fas fa-undo"></i></button>
+            <button type="submit" class="col btn" *ngIf="smsFinal" (click)="Repetir()">Vovler a Jugar!</button>
             <button type="submit" class="col btn" *ngIf="smsFinal" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>
         </div>
     

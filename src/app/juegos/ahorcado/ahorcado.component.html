@@ -41,11 +41,9 @@
           </div>
   
           <div class='row  justify-content-center' *ngIf="win || lose">
-            
-              <button type="submit" class="botones_resultados col-3" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>
-            
-              <button type="submit" class="botones_resultados col-3 " (click)="restartGame()"><i class="fa-solid fa-rotate-left"></i></button>
-            
+            <button type="submit" class="botones_resultados col-3 " (click)="restartGame()">Volver a Jugar!</button>
+
+            <button type="submit" class="botones_resultados col-3" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>            
           </div>
         </div>         
       </div>
