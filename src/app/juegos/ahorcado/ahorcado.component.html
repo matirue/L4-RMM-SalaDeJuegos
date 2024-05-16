@@ -34,16 +34,17 @@
           </div>
       
           <div class="letters">
-            <button class="letter_button" *ngFor="let letter of letters" (click)="checkLetter(letter)">{{letter}}</button>
+            <button [ngClass]="{'letter_button': lettersHabilitadas[i], 'disabled-button': !lettersHabilitadas[i] }" *ngFor="let letter of letters; let i = index" (click)="checkLetter(letter)" [disabled]="!lettersHabilitadas[i]">
+              {{ letter }}
+            </button>
+          
           </div>
   
           <div class='row  justify-content-center' *ngIf="win || lose">
             
               <button type="submit" class="botones_resultados col-3" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>
             
-              
-            
-              <button type="submit" class="botones_resultados col-3 " (click)="restartGame()"><i class="fas fa-undo"></i></button>
+              <button type="submit" class="botones_resultados col-3 " (click)="restartGame()"><i class="fa-solid fa-rotate-left"></i></button>
             
           </div>
         </div>         

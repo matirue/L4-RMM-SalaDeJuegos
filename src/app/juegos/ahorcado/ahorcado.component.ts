@@ -34,7 +34,8 @@ export class AhorcadoComponent implements OnInit {
   letters = ['A','B','C','D','E','F','G','H','I','J',
             'K','L','M','N','Ñ','O','P','Q','R','S',
             'T','U','V','W','X','Y','Z'];
-  
+  lettersHabilitadas: boolean[] = Array.from({ length: 27 }, () => true);
+
   constructor(public res: GameScoresService){
     this.selectWord();
   }
@@ -55,6 +56,12 @@ export class AhorcadoComponent implements OnInit {
     if(!this.palabra.includes(letter)){
       this.intntoes_usuarios += 1;
     }
+
+    const index = this.letters.indexOf(letter);
+    if (index !== -1) {
+      this.lettersHabilitadas[index] = false;
+    }
+
     this.replaceWord(letter);
   }
 
@@ -113,6 +120,8 @@ export class AhorcadoComponent implements OnInit {
     this.lose = false;
     this.intntoes_usuarios = 0;
     document.querySelector('.letters__container')?.classList.remove('hide');
+    // Vuelve a habilitar todas las letras
+    this.lettersHabilitadas = Array.from({ length: 27 }, () => true);
     this.selectWord();
   }
 
