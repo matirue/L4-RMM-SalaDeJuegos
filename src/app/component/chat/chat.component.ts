@@ -29,6 +29,10 @@ export class ChatComponent implements OnInit {
     },20)
   }
 
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+
 
   EnviarMensaje(){
 
@@ -39,5 +43,13 @@ export class ChatComponent implements OnInit {
     this.chatSrv.AgregarMensaje(this.mensaje);
 
     this.mensaje='';        
+  }
+
+
+  scrollToBottom(): void {
+    try {
+      this.elemento.scrollTop = this.elemento.scrollHeight;
+    } catch (err) { 
+    }
   }
 }

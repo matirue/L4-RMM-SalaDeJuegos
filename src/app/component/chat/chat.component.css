@@ -67,13 +67,64 @@
     
     .app-mensajes{
       overflow-y:scroll;
-      height:270px;
-      /*background:gray;*/
+      height: 265px; 
       padding: 5px;
       scrollbar-color: rgb(138, 138, 138) #785978;
       scrollbar-width: 10px;
+      position: relative;
+
+      .block-me {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .hora-chat{
+          color: #413838;
+          font-size: 11px;
+          margin-top: 0px;
+          padding-top: 0px;
+        }
+
+        .user-block{
+          .user {
+            padding: .35em .65em;
+            font-size: .75em;
+            font-weight: 800;
+            line-height: 1;
+            color: #bd3d3d;
+            text-align: center;
+          }
+        }
+      }
+      .block-us {
+        .hora-chat{
+          color: #413838;
+          font-size: 11px;
+          margin-top: 0px;
+          padding-top: 0px;
+        }
+
+        .user-block{
+          .user {
+            padding: .35em .65em;
+            font-size: .75em;
+            font-weight: 800;
+            line-height: 1;
+            color: #404040bd;
+            text-align: center;
+          }
+        }
+      }      
     }
     
+    input[type="text"] {  
+      width: 100%;
+      bottom: 0;  
+      padding: 10px;  
+      border: 1px solid #ccc;  
+      margin-top: 10px;
+    }
     
     /* Animaciones */
     .animated {

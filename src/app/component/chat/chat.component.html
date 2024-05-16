@@ -6,21 +6,28 @@
             <hr>
 
             <div class="app-mensajes" id="app-mensajes">
-                <div *ngFor='let chat of chatSrv.chats' [ngClass]="{'text-right': chatSrv.nombreUser == chat.nombre}">
-                    <span class="badge badge-primary" *ngIf="chatSrv.nombreUser == chat.nombre">Yo</span>
-                    
-                    <span class="badge badge-success" *ngIf="chatSrv.nombreUser != chat.nombre">{{chat.nombre}}</span>
-                  
-                    <br>
+                <div *ngFor='let chat of chatSrv.chats'>
+                    <div *ngIf="chatSrv.nombreUser == chat.nombre" class="block-me">
+                        <div class="user-block">
+                            <span class="hora-chat">{{chat.hora}}</span>  
+                            <i class="user">Yo</i>
+                        </div>
+                        
+                        <p class="badge badge-pill badge-light">{{chat.mensaje}}</p>                          
+                    </div>
 
-                    <p class="badge badge-pill badge-light">{{chat.mensaje}}</p>
-
-                    <span class="hora-chat">{{chat.hora}}</span>
-                </div>  
-
-                <input type="text" class="form-control" name="mensaje" autocomplete="off" [(ngModel)]="mensaje" 
-                    (keyup.enter)="EnviarMensaje()" placeholder="Enviar... ">
+                    <div *ngIf="chatSrv.nombreUser != chat.nombre" class="block-us">
+                        <div class="user-block">                             
+                            <i class="user">{{chat.nombre}}</i>
+                            <span class="hora-chat">{{chat.hora}}</span> 
+                        </div>
+                        
+                        <p class="badge badge-pill badge-light">{{chat.mensaje}}</p>     
+                    </div>
+                </div>   
             </div> 
+
+            <input type="text" class="form-control my-input" name="mensaje" autocomplete="off" [(ngModel)]="mensaje" (keyup.enter)="EnviarMensaje()" placeholder="Enviar... ">
         </div>
     </div>
 </div>
