@@ -16,10 +16,31 @@ export class ChatComponent implements OnInit {
 
   mensaje: string = '';
   elemento: any;
+  chat: any; // Or const chat: any
 
+
+  fechaFormateada: string | undefined;
+  
   constructor(public chatSrv: ChatService) { 
-    this.chatSrv.CargarMensaje().subscribe( () => { 
-                                            this.elemento.scrollTop = this.elemento.scrollHeight; } );
+    // this.chatSrv.CargarMensaje().subscribe( () => { 
+    //                                         this.elemento.scrollTop = this.elemento.scrollHeight; } );
+
+    this.chatSrv.CargarMensaje().subscribe(() => {
+      let chat: any; // Or const chat: any;
+
+                                              const timestamp = chat.fecha; 
+                                              const fecha = new Date(timestamp * 1000); 
+                                              this.fechaFormateada = this.formatoFecha(fecha);
+                                              this.elemento.scrollTop = this.elemento.scrollHeight;
+                                            });
+  }
+
+  //formatea la fecha dd/mm/aaaa
+  private formatoFecha(fecha: Date): string {
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const anio = fecha.getFullYear().toString();
+    return `${dia}/${mes}/${anio}`;
   }
 
 

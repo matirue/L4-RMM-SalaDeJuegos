@@ -6,6 +6,7 @@ import { LoginComponent } from './component/login/login.component';
 import { ErrorV2Component } from './component/error-v2/error-v2.component';
 import { AuthGuardsService } from './guards/auth-guards.service';
 import { RegistroComponent } from './component/registro/registro.component'; 
+import { ChatComponent } from './component/chat/chat.component';
 
 export const routes: Routes = [ 
       { path: '', redirectTo: '/login', pathMatch: "full" },
@@ -17,6 +18,7 @@ export const routes: Routes = [
       //system
       { path: 'juegos', loadChildren: () => import('./juegos/juegos-routing.module').then(m => m.JuegosRoutingModule), canActivate: [AuthGuardsService] },  // is not standalone
       { path:'home', component: HomeComponent, canActivate: [AuthGuardsService] },
+      { path:'chat', component: ChatComponent, canActivate: [AuthGuardsService] },
       { path:'quienSoy', component: QuienSoyComponent }, 
 
       //ERROR o page builder

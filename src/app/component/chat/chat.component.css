@@ -54,8 +54,8 @@
     
     .chat-window{
       padding: 10px;
-      width: 350px;
-      height: 420px;
+      width: 750px;
+      height: 520px;
       overflow: hidden;
       border: 1px solid #717171;
       border-radius: 20px;
@@ -67,7 +67,7 @@
     
     .app-mensajes{
       overflow-y:scroll;
-      height: 265px; 
+      height: 365px; 
       padding: 5px;
       scrollbar-color: rgb(138, 138, 138) #785978;
       scrollbar-width: 10px;

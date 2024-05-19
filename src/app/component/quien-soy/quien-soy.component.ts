@@ -16,8 +16,8 @@ export class QuienSoyComponent {
   }
 
   goAdivinarColor(){
-    // this.router.navigate(["juegos/adivinarColor"]);
-    this.router.navigate([" "]);
+    this.router.navigate(["juegos/adivinarColor"]);
+    // this.router.navigate([" "]);
   }
 
 }

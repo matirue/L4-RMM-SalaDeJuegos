@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" type="button" (click)="quienSoy()">Quien Soy<span class="sr-only"></span></a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link active" type="button" (click)="goChat()" *ngIf="ocultarLogout">Chat<span class="sr-only"></span></a>
+                </li> 
                 <!-- <li class="nav-item">
                     <a class="nav-link active" type="button"  href="home">Home<span class="sr-only"></span></a>
                 </li> -->

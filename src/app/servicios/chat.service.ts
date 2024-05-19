@@ -28,7 +28,7 @@ export class ChatService {
 
   CargarMensaje(){
 
-    this.itemsCollections = this.aFire.collection<Mensaje>('chats', ref=>ref.orderBy('fecha','desc').limit(5));
+    this.itemsCollections = this.aFire.collection<Mensaje>('chats', ref=>ref.orderBy('fecha','desc').limit(20));
 
     return this.itemsCollections.valueChanges().pipe(map( (mensajes: Mensaje[]) => {
           this.chats = [];

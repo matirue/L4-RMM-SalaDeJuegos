@@ -78,7 +78,7 @@ export class AhorcadoComponent implements OnInit {
 
       this.res.agregarResultado('Win', 'Ahorcado');
 
-      this.message = 'Ganaste';
+      this.message = 'GANASTE!!!';
       this.puntos =+ 1;
       this.win = true;
       this.hideInterface();
@@ -89,7 +89,7 @@ export class AhorcadoComponent implements OnInit {
       this.res.agregarResultado('Lose', 'Ahorcado');
 
       this.intntoes_usuarios = 8;
-      this.message = 'Perdiste';
+      this.message = 'PERDISTE!!!';
       this.lose = true;
       this.hideInterface();
     }

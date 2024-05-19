@@ -54,6 +54,12 @@ export class AuthService {
 
     try{
         const retorno = await this.afAuth.createUserWithEmailAndPassword(email, password);
+        // Guarda el email y la fecha actual en Firestore
+        const userDocRef = this.firestore.collection('users').doc(retorno.user?.uid);
+        userDocRef.set({
+          email: retorno.user?.email,
+          loginDate: new Date() // Fecha actual
+        });
 
         return retorno; 
     }catch(error){

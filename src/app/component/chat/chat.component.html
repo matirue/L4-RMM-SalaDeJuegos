@@ -9,7 +9,7 @@
                 <div *ngFor='let chat of chatSrv.chats'>
                     <div *ngIf="chatSrv.nombreUser == chat.nombre" class="block-me">
                         <div class="user-block">
-                            <span class="hora-chat">{{chat.hora}}</span>  
+                            <span class="hora-chat">{{ chat.fecha | date:'dd/MM/yyyy' }} - {{chat.hora}}</span>  
                             <i class="user">Yo</i>
                         </div>
                         
@@ -18,8 +18,8 @@
 
                     <div *ngIf="chatSrv.nombreUser != chat.nombre" class="block-us">
                         <div class="user-block">                             
-                            <i class="user">{{chat.nombre}}</i>
-                            <span class="hora-chat">{{chat.hora}}</span> 
+                            <i class="user">{{chat.nombre}}</i> 
+                            <span class="hora-chat">{{ chat.fecha | date:'dd/MM/yyyy' }} - {{chat.hora}}</span> 
                         </div>
                         
                         <p class="badge badge-pill badge-light">{{chat.mensaje}}</p>     

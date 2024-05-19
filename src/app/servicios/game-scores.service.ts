@@ -17,8 +17,7 @@ export class GameScoresService {
       public authSvc: AuthService
   ) { }
 
-  cargarResultado(){
-
+  cargarResultado(){ 
     this.itemCollection = this.authFire.collection<Scores>( 'scores', aux => aux.orderBy('fecha', 'desc').limit(50));
 
     return this.itemCollection.valueChanges().pipe(map((resultados: Scores[]) => {

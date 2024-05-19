@@ -65,6 +65,7 @@ export class NavBarComponent {
 
   home(){ this.router.navigateByUrl('home'); }
   quienSoy(){ this.router.navigateByUrl('quienSoy'); }
+  goChat(){ this.router.navigateByUrl('chat'); }
   // historial(){ this.router.navigateByUrl('juegos/resultados'); }
   // encuesta(){ this.router.navigateByUrl('juegos/encuesta'); }
   goLogin() { this.router.navigateByUrl('login'); }

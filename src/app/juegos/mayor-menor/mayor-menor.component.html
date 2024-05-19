@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row"> 
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3"> -->
+        <div class="col-sm-4">
             <div class="img__container">
                 <span class="counter"> Vidas: {{vidas}}/{{vidasTotal}}</span>
                 <img src="../assets/imagenes_juegos/mayorMenor/{{numero}}.png" alt="">
@@ -17,7 +18,8 @@
             </div>
         </div>
   
-        <div class="col-sm-5"> 
+        <!-- <div class="col-sm-5">  -->
+        <div class="col-sm-8"> 
             <span class="counter"> Puntos: {{puntos}}</span>
     
             <br><br>
@@ -36,9 +38,9 @@
             <button type="submit" class="col btn" *ngIf="smsFinal" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>
         </div>
     
-        <div class="col-sm-4">
+        <!-- <div class="col-sm-4">
             <app-chat></app-chat>
-        </div>
+        </div> -->
       
     </div>
   </div>

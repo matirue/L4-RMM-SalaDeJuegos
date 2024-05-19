@@ -25,16 +25,16 @@ export class HomeComponent implements OnInit {
 
   goMayorMenor(){ this.router.navigate(["juegos/mayorMenor"]); }
 
-  // goPreguntados(){ this.router.navigate(["juegos/preguntados"]); }
+  goPreguntados(){ this.router.navigate(["juegos/preguntados"]); }
   
-  // goAdivinarColor(){ this.router.navigate(["juegos/adivinarColor"]); }
+  goAdivinarColor(){ this.router.navigate(["juegos/adivinarColor"]); }
 
   // por el momento..
   // goAhorcado(){ this.router.navigate(["build"]); }
 
   // goMayorMenor(){ this.router.navigate(["build"]); }
 
-  goPreguntados(){ this.router.navigate(["build"]); }
+  // goPreguntados(){ this.router.navigate(["build"]); }
   
-  goAdivinarColor(){ this.router.navigate(["build"]); }
+  // goAdivinarColor(){ this.router.navigate(["build"]); }
 }

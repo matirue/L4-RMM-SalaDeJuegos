@@ -6,14 +6,18 @@ import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { JuegosRoutingModule } from './juegos-routing.module'; 
 import { ChatModule } from '../component/chat/chat.module';
 import { RouterLink } from '@angular/router';
-
-
+import { PreguntadosComponent } from './preguntados/preguntados.component';
+import { AdivinarColorComponent } from './adivinar-color/adivinar-color.component';
+import { ColoresComponent } from './colores/colores.component';
 
 
 @NgModule({
   declarations: [
     MayorMenorComponent,
-    AhorcadoComponent
+    AhorcadoComponent,
+    PreguntadosComponent,
+    AdivinarColorComponent,
+    ColoresComponent
   ],
   imports: [
     CommonModule,

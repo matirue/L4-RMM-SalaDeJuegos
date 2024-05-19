@@ -6,10 +6,14 @@ import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
 //games
 import { AuthGuardsService } from '../guards/auth-guards.service';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
+import { PreguntadosComponent } from './preguntados/preguntados.component'; 
+import { AdivinarColorComponent } from './adivinar-color/adivinar-color.component';
 
 const routes: Routes = [
   { path: 'mayorMenor', component: MayorMenorComponent, canActivate: [AuthGuardsService] },
   { path: 'ahorcado', component: AhorcadoComponent, canActivate: [AuthGuardsService] },
+  { path: 'preguntados', component: PreguntadosComponent, canActivate: [AuthGuardsService] },
+  { path: 'adivinarColor', component: AdivinarColorComponent, canActivate: [AuthGuardsService] },
 ];
 
 @NgModule({

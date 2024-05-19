@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+  
+      <div class="col-sm-5">
+        
+        <h1>Pregunta:</h1>
+  
+        <button type="button" class="col btn" *ngIf="!vamos" (click)="Iniciar()">Iniciar Juego</button>
+  
+  
+        <img *ngIf="!smsFinal &&vamos " [src]="imgDigimon.img">
+  
+        <h3 *ngIf="!smsFinal &&vamos" >{{hacerPregunta}}</h3>
+  
+  
+        <div class="mensaje win" *ngIf="win">
+          <span>{{mensajeWin}}</span>
+        </div>
+      
+        <div class="mensaje lose" *ngIf="lose">
+          <span>{{mensajeLose}}</span>
+        </div>
+  
+        <div class="mensaje lose" *ngIf="smsFinal">
+          <span>{{mensajeFinal}}</span>
+        </div>
+      
+      </div>
+  
+      <div class="col-sm-7">
+        <span class="counter"> Puntos: {{puntos}}/3  - </span>
+        <span class="counter"> Vidas: {{vidas}}/{{vidasTotal}}</span>
+  
+        <br><br>
+
+        <div>
+            <button type="button" class="col btn" *ngIf="!smsFinal && vamos" (click)="Control(2)">{{boton_1}}</button>
+            <button type="button" class="col btn" *ngIf="!smsFinal && vamos" (click)="Control(3)">{{boton_2}}</button>
+            <button type="button" class="col btn" *ngIf="!smsFinal && vamos" (click)="Control(4)">{{boton_3}}</button>
+            <button type="button" class="col btn" *ngIf="!smsFinal && vamos" (click)="Control(5)">{{boton_4}}</button>
+        </div>
+  
+        <button type="submit" class="col btn" *ngIf="smsFinal" (click)="Repetir()">Volver a Jugar!</button>
+        <button type="submit" class="col btn" *ngIf="smsFinal" [routerLink]="['/home']" routerLinkActive="router-link-active" >Salir</button>
+        
+      </div> 
+    </div>
+  </div> 
+  
+  
+  
+  
+  
+  
+  
